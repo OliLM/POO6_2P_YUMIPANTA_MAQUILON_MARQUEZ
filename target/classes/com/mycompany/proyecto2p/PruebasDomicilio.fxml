@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox fx:id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2p.PruebasDomicilioController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Agende su cita" textFill="#2c53bf">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Label text="Tipo:" />
+            <ComboBox fx:id="comboDiagnostico" prefWidth="150.0" />
+            <Label text="Prueba:" />
+            <ComboBox fx:id="comboPrueba" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Label text="Valor Unitario:" />
+            <Label text="\$" />
+         </children>
+         <padding>
+            <Insets left="36.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Label text="Cantidad:" />
+            <TextField fx:id="texCantidad" />
+         </children>
+         <padding>
+            <Insets left="62.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btnAgregar" mnemonicParsing="false" style="-fx-background-color: #1282C8;" text="Agregar" textFill="WHITE" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" right="85.0" top="5.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <Line endX="550.0" stroke="#aca7a7" />
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Detalle de su compra:" textFill="#2c53bf">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="70.0">
+         <children>
+            <VBox fx:id="nombreProductos" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="textNombre" text="Nombre" />
+               </children>
+            </VBox>
+            <VBox fx:id="cantidadProductos" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="textCantidad" text="Cantidad" />
+               </children>
+            </VBox>
+            <VBox fx:id="precioProductos" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="textPrecio" text="Precio" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label text="Subtotal:" />
+                  <Label fx:id="subTotal" text="31515" />
+               </children>
+               <padding>
+                  <Insets right="165.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label text="Servicio domicilio:" />
+                  <Label fx:id="servicioDomicilio" text="31515" />
+               </children>
+               <padding>
+                  <Insets right="165.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label text="Total:" />
+                  <Label fx:id="total" text="31515" />
+               </children>
+               <padding>
+                  <Insets right="165.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btnContinuar" mnemonicParsing="false" style="-fx-background-color: #1282C8;" text="Continuar" textFill="WHITE" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" right="85.0" top="5.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

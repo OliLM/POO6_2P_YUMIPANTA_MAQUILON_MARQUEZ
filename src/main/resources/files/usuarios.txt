@@ -1,0 +1,3 @@
+usuario,password,tipo
+machi,6115515,P
+scsc,scscsc,P

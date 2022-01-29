@@ -80,7 +80,7 @@ public class VentanaInicioController implements Initializable {
         //Codigo para el contenedor de Label Bienvenido
         Label nombrePaciente = new Label("Bienvenido");
         nombrePaciente.setFont(Font.font(20));
-//        nombrePaciente.setTextFill(Paint.valueOf("WHILE"));
+//        nombrePaciente.setTextFill(Paint.valueOf("White"));
         VBox h1 = new VBox();
         h1.setAlignment(Pos.TOP_LEFT);
         h1.getChildren().add(nombrePaciente);

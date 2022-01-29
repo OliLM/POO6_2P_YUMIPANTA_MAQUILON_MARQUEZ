@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.proyecto2p;
+package controllers;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  */
 public class App extends Application{
     private static Scene scene;
-    public static String imagen="src/main/resources/imagenes/fondo.jpg";
+    public static String imagen="src/main/resources/imagenes/";
     public static String pathFiles="src/main/resources/files/";
     
     @Override

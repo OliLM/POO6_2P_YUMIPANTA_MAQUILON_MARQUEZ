@@ -4,5 +4,5 @@ module com.mycompany.proyecto2p {
     requires java.base;
 
     opens com.mycompany.proyecto2p to javafx.fxml;
-    exports com.mycompany.proyecto2p;
+    exports controllers;
 }

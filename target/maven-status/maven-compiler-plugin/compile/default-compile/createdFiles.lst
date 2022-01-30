@@ -1,5 +1,4 @@
-com\mycompany\proyecto2p\VentanaInicioController$2.class
-com\mycompany\proyecto2p\App.class
+clasesModelos\Prueba.class
+clasesModelos\Paciente.class
 module-info.class
-com\mycompany\proyecto2p\VentanaInicioController$1.class
-com\mycompany\proyecto2p\VentanaInicioController.class
+clasesModelos\Usuario.class

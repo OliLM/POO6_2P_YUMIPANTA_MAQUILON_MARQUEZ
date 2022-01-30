@@ -1,3 +1,9 @@
 usuario,password,tipo
 machi,6115515,P
 scsc,scscsc,P
+<<<<<<< HEAD
+=======
+,,P
+asd,asd,P
+as,as,P
+>>>>>>> 7d8a166e7a75be7642a181979eb1a77e9f636f60

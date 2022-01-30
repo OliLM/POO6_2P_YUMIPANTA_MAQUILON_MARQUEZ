@@ -31,9 +31,16 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 
 /**
  * FXML Controller class
@@ -77,6 +84,7 @@ public class VentanaInicioController implements Initializable {
 
     @FXML
     private void ventanaUsuario(ActionEvent event) {
+        
         //Codigo para el contenedor de Label Bienvenido
         Label nombrePaciente = new Label("Bienvenido");
         nombrePaciente.setFont(Font.font(20));
@@ -111,6 +119,16 @@ public class VentanaInicioController implements Initializable {
         root.setAlignment(Pos.TOP_CENTER);
         root.setSpacing(30);
         root.getChildren().addAll(h1, contenedorBotones);
+        //fondo de pantalla
+        try(FileInputStream im= new FileInputStream(App.pathFiles+"fondo")){
+            Image imagen= new Image(im);
+            BackgroundImage backgroundImage = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+            Background bgi =new Background(backgroundImage);
+            root.setBackground(bgi);
+           
+        }catch(Exception a){
+            
+        }
 
         //ventada Usuario
         Stage s = (Stage) btnenviar.getScene().getWindow();

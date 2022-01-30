@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.ObjectOutputStream;
 import java.nio.charset.StandardCharsets;
+import com.mycompany.proyecto2p.App;
 
 
 public class Usuario {
@@ -52,10 +53,10 @@ public class Usuario {
         this.tipo = tipo;
     }
     
-    public static char obtener_tipo(String user, String password , String ruta){
+    public static char obtener_tipo(String user, String password  ){
         char tipo ='x';
         try {
-            FileReader reader= new FileReader(new File(ruta));
+            FileReader reader= new FileReader(new File(App.pathFiles+"usuarios.txt"));
             BufferedReader bf= new BufferedReader(reader);
             String Encabezado=bf.readLine();
             String linea=null;
@@ -66,6 +67,29 @@ public class Usuario {
         }catch(Exception e){     
         }
         return tipo;  
+    }
+    public static boolean validar_ususario(String user, String password){
+        boolean valor=false;
+        try {
+            FileReader reader= new FileReader(new File(App.pathFiles+"ususarios.txt"));
+            BufferedReader bf= new BufferedReader(reader);
+            String Encabezado=bf.readLine();
+            String linea=null;
+            while((linea=bf.readLine())!=null){
+                String [] datos=linea.split(",");
+                String usuario= datos[0] ;
+                String contraseña= datos[1] ;
+                if(usuario.equals(user)&& password.equals(contraseña)){
+                    valor=true;
+                }
+                
+            }        
+            
+        }catch(Exception e){     
+        }
+        
+        return valor;
+        
     }
     
     

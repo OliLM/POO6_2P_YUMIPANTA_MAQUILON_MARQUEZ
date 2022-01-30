@@ -18,6 +18,8 @@ import java.nio.charset.StandardCharsets;
 import com.mycompany.proyecto2p.App;
 
 
+import com.mycompany.proyecto2p.App;
+
 public class Usuario {
     private String usuario;
     private String paswword;
@@ -52,11 +54,11 @@ public class Usuario {
     public void setTipo(char tipo) {
         this.tipo = tipo;
     }
-    
-    public static char obtener_tipo(String user, String password  ){
+     public static char obtener_tipo(String user, String password ){
         char tipo ='x';
         try {
             FileReader reader= new FileReader(new File(App.pathFiles+"usuarios.txt"));
+
             BufferedReader bf= new BufferedReader(reader);
             String Encabezado=bf.readLine();
             String linea=null;
@@ -68,10 +70,10 @@ public class Usuario {
         }
         return tipo;  
     }
-    public static boolean validar_ususario(String user, String password){
+    public static boolean validar_usuario(String user, String password){
         boolean valor=false;
         try {
-            FileReader reader= new FileReader(new File(App.pathFiles+"ususarios.txt"));
+            FileReader reader= new FileReader(new File(App.pathFiles+"usuarios.txt"));
             BufferedReader bf= new BufferedReader(reader);
             String Encabezado=bf.readLine();
             String linea=null;
@@ -85,12 +87,20 @@ public class Usuario {
                 
             }        
             
-        }catch(Exception e){     
+        }catch(Exception e){ 
+            System.out.println("fallo de lectura");
         }
+       
         
         return valor;
         
+        
     }
+    
+    
+            
+            
+            
     
     
     

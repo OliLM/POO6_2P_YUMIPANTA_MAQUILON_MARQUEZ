@@ -1,2 +1,4 @@
 usuario,password,tipo
 machi,6115515,P
+scsc,scscsc,P
+hugo,234,P

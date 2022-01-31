@@ -24,9 +24,9 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Label text="Tipo:" />
-            <ComboBox fx:id="ComboTipo" prefWidth="150.0" />
+            <ComboBox id="ComboDiagnostico" fx:id="comboDiagnostico" prefWidth="150.0" />
             <Label text="Prueba:" />
-            <ComboBox fx:id="comboPrueba" prefWidth="150.0" />
+            <ComboBox id="ComboPrueba" fx:id="comboPrueba" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
@@ -129,7 +129,7 @@
       </VBox>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btnContinuar" mnemonicParsing="false" style="-fx-background-color: #1282C8;" text="Continuar" textFill="WHITE" />
+            <Button fx:id="btnContinuar" mnemonicParsing="false" onAction="#abrirVentanaUbicacionCliente" style="-fx-background-color: #1282C8;" text="Continuar" textFill="WHITE" />
          </children>
          <padding>
             <Insets bottom="15.0" right="85.0" top="5.0" />

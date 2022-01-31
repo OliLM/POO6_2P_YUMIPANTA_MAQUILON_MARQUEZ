@@ -70,6 +70,7 @@ public class VentanaInicioController implements Initializable {
 
         });
     }
+    public Usuario user;
     @FXML
     private VBox rootPrincipal;
     @FXML
@@ -93,13 +94,15 @@ public class VentanaInicioController implements Initializable {
         //validar usuario
         if(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText())==true && Usuario.obtener_tipo(txtuser.getText(),txtpassword.getText())==u){
             System.out.println(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText()));
+           user=new Usuario(txtuser.getText(),txtpassword.getText(), Usuario.obtener_tipo(txtuser.getText(),txtpassword.getText()));
            
-            
-        
+  
         //Codigo para el contenedor de Label Bienvenido
         Label nombrePaciente = new Label("Bienvenido");
         nombrePaciente.setFont(Font.font(20));
+
         nombrePaciente.setTextFill(Paint.valueOf("White"));
+
         VBox h1 = new VBox();
         h1.setAlignment(Pos.TOP_LEFT);
         h1.getChildren().add(nombrePaciente);

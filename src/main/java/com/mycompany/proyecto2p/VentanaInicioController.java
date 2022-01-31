@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package com.mycompany.proyecto2p;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,6 +41,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import clasesModelos.Usuario;
 
 /**
  * FXML Controller class
@@ -63,7 +64,7 @@ public class VentanaInicioController implements Initializable {
 
             @Override
             public void handle(MouseEvent e) {
-                crearUsuario();
+                VentanacrearUsuario();
 
             }
 
@@ -81,11 +82,17 @@ public class VentanaInicioController implements Initializable {
     private HBox hbC;
     @FXML
     private Label crearcuenta;
+    @FXML
+    private TextField txtuser;
+    @FXML
+    private TextField txtpassword;
 
     @FXML
-    private void ventanaUsuario(ActionEvent event) {
+    private void OpcionesUsuario(ActionEvent event) {
+        char u='P';
         //validar usuario
-            
+        if(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText())==true && Usuario.obtener_tipo(txtuser.getText(),txtpassword.getText())==u){
+            System.out.println(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText()));
         
         //Codigo para el contenedor de Label Bienvenido
         Label nombrePaciente = new Label("Bienvenido");
@@ -130,14 +137,15 @@ public class VentanaInicioController implements Initializable {
             root.setBackground(bg);
         }catch(Exception i){
             System.out.println("algo salio mal ya fue");
-            
         }
+        
 
         //ventada Usuario
         Stage s = (Stage) btnenviar.getScene().getWindow();
         Scene c = new Scene(root, 600, 400);
         s.setScene(c);
         s.show();
+        
 
         //controlador de evento para el boton ubicaciones
         btnUbicaciones.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -191,13 +199,51 @@ public class VentanaInicioController implements Initializable {
         
         });
         
-
+        }
+        else if(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText())==true && Usuario.obtener_tipo(txtuser.getText(),txtpassword.getText())=='L'){
+            ///creacion de objetos en el menu de laboratorista
+            Label Bienvenida =new Label("Bienvenido "+txtuser.getText());
+            HBox c1= new HBox();
+            VBox contenedor_botones=new VBox();
+            contenedor_botones.setSpacing(40);
+            c1.setSpacing(40);
+            c1.setAlignment(Pos.TOP_LEFT);
+            Button consolidar_citas =new Button();
+            Button Consultar_citas=new Button();
+            consolidar_citas.setText("Generar Consolodiado de citas");
+            Consultar_citas.setText("Consultar citas");
+            contenedor_botones.getChildren().addAll(consolidar_citas,Consultar_citas);
+            VBox princi_labo=new VBox();
+            princi_labo.setSpacing(40);
+            princi_labo.getChildren().addAll(c1,contenedor_botones);
+            try(FileInputStream input =new FileInputStream(App.imagen+"fondo.jpg")){
+            Image i=new Image(input);
+            BackgroundImage bgI=new BackgroundImage(i, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT); 
+            Background bg= new Background(bgI);
+            princi_labo.setBackground(bg);
+        }catch(Exception i){
+            System.out.println("algo salio mal ya fue");
+        }
+         Stage ventanalabo= new Stage();
+         Scene scene_labo= new Scene(princi_labo);
+         ventanalabo.setScene(scene_labo);
+         ventanalabo.show();
+                    
+            
+            
+            
+            
+            
+            
+        }else{
+            System.out.println("ususario no registrado");
+        }
+    
     }
-    
-    
-    
 
-    public void crearUsuario() {
+    
+ 
+    public void VentanacrearUsuario() {
 
         Platform.runLater(new Runnable() {
             @Override

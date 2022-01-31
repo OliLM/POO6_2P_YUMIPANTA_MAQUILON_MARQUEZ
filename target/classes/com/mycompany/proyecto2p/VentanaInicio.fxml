@@ -31,7 +31,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="txtuser" GridPane.columnIndex="1" />
             <HBox fx:id="hbU" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Usuario:" />
@@ -40,7 +40,7 @@
                   <Insets right="20.0" />
                </padding>
             </HBox>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <HBox fx:id="hbC" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
                   <Label text="Contraseña:" />
@@ -51,7 +51,7 @@
             </HBox>
          </children>
       </GridPane>
-      <Button fx:id="btnenviar" mnemonicParsing="false" onAction="#ventanaUsuario" style="-fx-background-color: #1282C8;" text="Iniciar Seción" textFill="WHITE" />
+      <Button fx:id="btnenviar" mnemonicParsing="false" onAction="#OpcionesUsuario" style="-fx-background-color: #1282C8;" text="Iniciar Seción" textFill="WHITE" />
       <HBox alignment="CENTER" prefHeight="101.0" prefWidth="600.0">
          <children>
             <Label fx:id="crearcuenta" text="Crear nueva cuenta" textFill="#2e74e4" />

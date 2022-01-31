@@ -15,7 +15,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.ObjectOutputStream;
 import java.nio.charset.StandardCharsets;
-import controllers.App;
+import com.mycompany.proyecto2p.App;
+
+
+import com.mycompany.proyecto2p.App;
 
 public class Usuario {
     private String usuario;
@@ -51,11 +54,11 @@ public class Usuario {
     public void setTipo(char tipo) {
         this.tipo = tipo;
     }
-    
-    public static char obtener_tipo(String user, String password ){
+     public static char obtener_tipo(String user, String password ){
         char tipo ='x';
         try {
-            FileReader reader= new FileReader(new File(App.pathFiles+"pruebas.txt"));
+            FileReader reader= new FileReader(new File(App.pathFiles+"usuarios.txt"));
+
             BufferedReader bf= new BufferedReader(reader);
             String Encabezado=bf.readLine();
             String linea=null;
@@ -67,28 +70,34 @@ public class Usuario {
         }
         return tipo;  
     }
-    
-    public static boolean validar_usuario(String user, String password ){
-        boolean v=false;
-        try{
-       FileReader fr= new FileReader(new File(App.pathFiles+"pruebas.txt"));
-       BufferedReader bf= new BufferedReader(fr);
-       String linea= bf.readLine();
-       while(linea!=null){
-           linea=bf.readLine();
-           String [] informacion=linea.split(",");
-           String usuario= informacion[0];
-           String contraseña= informacion[1];
-           if(usuario.equals(user)&& contraseña.equals(password)){
-               v=true;
-           }
-       }
-       }catch(Exception a){
-           
-           
-       }
-       return  v;
+    public static boolean validar_usuario(String user, String password){
+        boolean valor=false;
+        try {
+            FileReader reader= new FileReader(new File(App.pathFiles+"usuarios.txt"));
+            BufferedReader bf= new BufferedReader(reader);
+            String Encabezado=bf.readLine();
+            String linea=null;
+            while((linea=bf.readLine())!=null){
+                String [] datos=linea.split(",");
+                String usuario= datos[0] ;
+                String contraseña= datos[1] ;
+                if(usuario.equals(user)&& password.equals(contraseña)){
+                    valor=true;
+                }
+                
+            }        
+            
+        }catch(Exception e){ 
+            System.out.println("fallo de lectura");
+        }
+       
+        
+        return valor;
+        
+        
     }
+    
+    
             
             
             

@@ -6,6 +6,8 @@
 package com.mycompany.proyecto2p;
 
 import java.net.URL;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +16,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-
+import clasesModelos.Prueba;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import clasesModelos.Prueba;
+import java.util.ArrayList;
 /**
  * FXML Controller class
  *
@@ -27,15 +34,16 @@ public class PruebasDomicilioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        
     }    
 
     @FXML
     private VBox root;
     @FXML
-    private ComboBox<?> comboDiagnostico;
+    private ComboBox<String> ComboTipo;
     @FXML
-    private ComboBox<?> comboPrueba;
+    private ComboBox<Prueba> comboPrueba;
     @FXML
     private TextField texCantidad;
     @FXML
@@ -60,7 +68,31 @@ public class PruebasDomicilioController implements Initializable {
     private Label total;
     @FXML
     private Button btnContinuar;
+    @FXML 
+    private Label dinero;
+    @FXML
+    void ValorPrueba(ActionEvent e){
+        Prueba p=comboPrueba.getValue();
+        double valor=p.getPrecio();
+        dinero.setText(String.valueOf(valor));
+    }
+    void AgregarPruebas(){
+        
+    }
+    
+    
+    
+    
+  
+  
+}
+
+ 
+  
+  
+  
+
 
     
     
-}
+

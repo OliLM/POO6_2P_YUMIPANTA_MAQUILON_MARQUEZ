@@ -93,6 +93,8 @@ public class VentanaInicioController implements Initializable {
         //validar usuario
         if(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText())==true && Usuario.obtener_tipo(txtuser.getText(),txtpassword.getText())==u){
             System.out.println(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText()));
+           
+            
         
         //Codigo para el contenedor de Label Bienvenido
         Label nombrePaciente = new Label("Bienvenido");

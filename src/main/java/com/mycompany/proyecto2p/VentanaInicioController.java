@@ -387,8 +387,8 @@ public class VentanaInicioController implements Initializable {
                 Stage nuevoPaciente = (Stage) crearcuenta.getScene().getWindow();
                 root.setSpacing(10);
                 root.getChildren().addAll(contTitulo, grid1);
-                Scene scene = new Scene(root, 600, 550);
-                nuevoPaciente.setScene(scene);
+
+                App.scene.setRoot(root);
                 nuevoPaciente.setTitle("Nuevo Paciente");
                 root.getChildren().addAll(hRegistro, hMensaje);
 
@@ -458,10 +458,10 @@ public class VentanaInicioController implements Initializable {
 
                 });
 
-                salir.setOnAction(new EventHandler<ActionEvent>(){
-                    
+                salir.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+
                     @Override
-                    public void handle(ActionEvent e){
+                    public void handle(ActionEvent e) {
                         cambiarventanaInicio();
                     }
                 });
@@ -472,29 +472,12 @@ public class VentanaInicioController implements Initializable {
         });
 
     }
-    
+
     public void cambiarventanaInicio() {
-      Platform.runLater(new Runnable() {
-          @Override
-          public void run() {              
-               
-              Stage inicio = (Stage) rootPrincipal.getScene().getWindow();
-              
-               FXMLLoader fx = new FXMLLoader(VentanaInicioController.class.getResource("VentanaInicio.fxml"));
-               try {
-                    Parent root = fx.load();
-                   Scene sc = new Scene(root);
-                   inicio.setScene(sc);
 
-                  inicio.show();
+        App.scene.setRoot(rootPrincipal);
 
-               } catch (IOException ex) {
-
-               }
-           }
-       }
-      );
-
+        
     }
 
 }

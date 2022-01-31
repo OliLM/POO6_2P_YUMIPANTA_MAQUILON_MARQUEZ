@@ -1,0 +1,7 @@
+Usuario,cédula,nombres,apellidos,fecha nacimiento,género,ciudad,email,teléfono
+machi,651651,will,maquilo,151,Masculino,guayaquil,castillo,651516
+scsc,sdcscsdc,dsc,dcscsdc,sdcs,Femenino,cscsd,csdcs,scc
+,,,,,null,,,
+asd,hakdsj,asda,asd,asd,,asda,asd,asd
+as,asd,asd,asd,asd,Femenino,asd,as,as
+CE,EE,ERER,CE,ERCE,Femenino,ECE,CERCEC,ASXADCC

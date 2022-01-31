@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * @author DELL
  */
 public class App extends Application{
-    private static Scene scene;
+    public static Scene scene;
     public static String imagen="src/main/resources/imagenes/";
     public static String pathFiles="src/main/resources/files/";
     

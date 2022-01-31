@@ -42,6 +42,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import clasesModelos.Usuario;
+import javafx.scene.layout.ColumnConstraints;
 
 /**
  * FXML Controller class
@@ -89,160 +90,143 @@ public class VentanaInicioController implements Initializable {
 
     @FXML
     private void OpcionesUsuario(ActionEvent event) {
-        char u='P';
+        char u = 'P';
         //validar usuario
-        if(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText())==true && Usuario.obtener_tipo(txtuser.getText(),txtpassword.getText())==u){
-            System.out.println(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText()));
-        
-        //Codigo para el contenedor de Label Bienvenido
-        Label nombrePaciente = new Label("Bienvenido");
-        nombrePaciente.setFont(Font.font(20));
+        if (Usuario.validar_usuario(txtuser.getText(), txtpassword.getText()) == true && Usuario.obtener_tipo(txtuser.getText(), txtpassword.getText()) == u) {
+            System.out.println(Usuario.validar_usuario(txtuser.getText(), txtpassword.getText()));
 
-        nombrePaciente.setTextFill(Paint.valueOf("White"));
+            //Codigo para el contenedor de Label Bienvenido
+            Label nombrePaciente = new Label("Bienvenido");
+            nombrePaciente.setFont(Font.font(20));
 
-        VBox h1 = new VBox();
-        h1.setAlignment(Pos.TOP_LEFT);
-        h1.getChildren().add(nombrePaciente);
-        h1.setPadding(new Insets(30, 0, 60, 20));
+            nombrePaciente.setTextFill(Paint.valueOf("White"));
 
-        //Codigo para los botones y su contenedor
-        //btn1
-        Button btnUbicaciones = new Button();
-        btnUbicaciones.setText("Conoce nuestras Ubicaciones");
-        btnUbicaciones.setStyle("-fx-background-color:Blue");
-        btnUbicaciones.setTextFill(Paint.valueOf("White"));
+            VBox h1 = new VBox();
+            h1.setAlignment(Pos.TOP_LEFT);
+            h1.getChildren().add(nombrePaciente);
+            h1.setPadding(new Insets(30, 0, 60, 20));
 
-        //btn2
-        Button btnDomicilio = new Button();
-        btnDomicilio.setText("Solicitar pruebas a domicilio");
-        btnDomicilio.setStyle("-fx-background-color:Blue");
-        btnDomicilio.setTextFill(Paint.valueOf("White"));
+            //Codigo para los botones y su contenedor
+            //btn1
+            Button btnUbicaciones = new Button();
+            btnUbicaciones.setText("Conoce nuestras Ubicaciones");
+            btnUbicaciones.setStyle("-fx-background-color: #1282C8");
+            btnUbicaciones.setTextFill(Paint.valueOf("White"));
 
-        //contenedor
-        VBox contenedorBotones = new VBox();
-        contenedorBotones.getChildren().addAll(btnUbicaciones, btnDomicilio);
-        contenedorBotones.setAlignment(Pos.CENTER);
-        contenedorBotones.setSpacing(40);
+            //btn2
+            Button btnDomicilio = new Button();
+            btnDomicilio.setText("Solicitar pruebas a domicilio");
+            btnDomicilio.setStyle("-fx-background-color: #1282C8");
+            btnDomicilio.setTextFill(Paint.valueOf("White"));
 
-        //contenedor Principal
-        VBox root = new VBox();
-        root.setAlignment(Pos.TOP_CENTER);
-        root.setSpacing(30);
-        root.getChildren().addAll(h1, contenedorBotones);
-     
-        try(FileInputStream input =new FileInputStream(App.imagen+"fondo.jpg")){
-            Image i=new Image(input);
-            BackgroundImage bgI=new BackgroundImage(i, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT); 
-            Background bg= new Background(bgI);
-            root.setBackground(bg);
-        }catch(Exception i){
-            System.out.println("algo salio mal ya fue");
-        }
-        
+            //contenedor
+            VBox contenedorBotones = new VBox();
+            contenedorBotones.getChildren().addAll(btnUbicaciones, btnDomicilio);
+            contenedorBotones.setAlignment(Pos.CENTER);
+            contenedorBotones.setSpacing(40);
 
-        //ventada Usuario
-        Stage s = (Stage) btnenviar.getScene().getWindow();
-        Scene c = new Scene(root, 600, 400);
-        s.setScene(c);
-        s.show();
-        
+            //contenedor Principal
+            VBox root = new VBox();
+            root.setAlignment(Pos.TOP_CENTER);
+            root.setSpacing(30);
+            root.getChildren().addAll(h1, contenedorBotones);
 
-        //controlador de evento para el boton ubicaciones
-        btnUbicaciones.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            try (FileInputStream input = new FileInputStream(App.imagen + "fondo.jpg")) {
+                Image i = new Image(input);
+                BackgroundImage bgI = new BackgroundImage(i, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+                Background bg = new Background(bgI);
+                root.setBackground(bg);
+            } catch (Exception i) {
+                System.out.println("algo salio mal ya fue");
+            }
 
-            @Override
-            public void handle(ActionEvent e) {
-                //Validar Usuario
-                
-                
-                
-                //Ventana Ubicaciones
-                Stage stage = new Stage();
-                FXMLLoader fx = new FXMLLoader(App.class.getResource("VentanaUbicacion.fxml"));
-                try {
-                    Parent root = fx.load();
-                    Scene scene = new Scene(root,1200,800);
-                    stage.setScene(scene);
-                    stage.setTitle("Ubicaciones");
-                    stage.show();
-                } catch (IOException ex) {
+            //ventada Usuario
+            Stage s = (Stage) btnenviar.getScene().getWindow();
+            Scene c = new Scene(root, 600, 400);
+            s.setScene(c);
+            s.show();
+
+            //controlador de evento para el boton ubicaciones
+            btnUbicaciones.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent e) {
+                    //Validar Usuario
+
+                    //Ventana Ubicaciones
+                    Stage stage = new Stage();
+                    FXMLLoader fx = new FXMLLoader(App.class.getResource("VentanaUbicacion.fxml"));
+                    try {
+                        Parent root = fx.load();
+                        Scene scene = new Scene(root, 1200, 800);
+                        stage.setScene(scene);
+                        stage.setTitle("Ubicaciones");
+                        stage.show();
+                    } catch (IOException ex) {
+
+                    }
 
                 }
 
-            }
+            });
 
-        });
-        
-        
-        //**************Ventana pruebas a domicilio************
-        
-        btnDomicilio.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            
-            @Override
-            public void handle(ActionEvent e){
-                Stage s = new Stage();
-                FXMLLoader fx = new FXMLLoader(VentanaInicioController.class.getResource("PruebasDomicilio.fxml"));
-                try{
-                    Parent root = fx.load();
-                    Scene sc = new Scene(root);
-                    s.setScene(sc);
-                    s.setTitle("Pruebas a domicilio");
-                    s.show();
-                    
-                    
-                }catch(IOException ex){
-                    
+            //**************Ventana pruebas a domicilio************
+            btnDomicilio.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent e) {
+                    Stage s = new Stage();
+                    FXMLLoader fx = new FXMLLoader(VentanaInicioController.class.getResource("PruebasDomicilio.fxml"));
+                    try {
+                        Parent root = fx.load();
+                        Scene sc = new Scene(root);
+                        s.setScene(sc);
+                        s.setTitle("Pruebas a domicilio");
+                        s.show();
+
+                    } catch (IOException ex) {
+
+                    }
+
                 }
-                
-            }
-        
-        
-        });
-        
-        }
-        else if(Usuario.validar_usuario(txtuser.getText(),txtpassword.getText())==true && Usuario.obtener_tipo(txtuser.getText(),txtpassword.getText())=='L'){
+
+            });
+
+        } else if (Usuario.validar_usuario(txtuser.getText(), txtpassword.getText()) == true && Usuario.obtener_tipo(txtuser.getText(), txtpassword.getText()) == 'L') {
             ///creacion de objetos en el menu de laboratorista
-            Label Bienvenida =new Label("Bienvenido "+txtuser.getText());
-            HBox c1= new HBox();
-            VBox contenedor_botones=new VBox();
+            Label Bienvenida = new Label("Bienvenido " + txtuser.getText());
+            HBox c1 = new HBox();
+            VBox contenedor_botones = new VBox();
             contenedor_botones.setSpacing(40);
             c1.setSpacing(40);
             c1.setAlignment(Pos.TOP_LEFT);
-            Button consolidar_citas =new Button();
-            Button Consultar_citas=new Button();
+            Button consolidar_citas = new Button();
+            Button Consultar_citas = new Button();
             consolidar_citas.setText("Generar Consolodiado de citas");
             Consultar_citas.setText("Consultar citas");
-            contenedor_botones.getChildren().addAll(consolidar_citas,Consultar_citas);
-            VBox princi_labo=new VBox();
+            contenedor_botones.getChildren().addAll(consolidar_citas, Consultar_citas);
+            VBox princi_labo = new VBox();
             princi_labo.setSpacing(40);
-            princi_labo.getChildren().addAll(c1,contenedor_botones);
-            try(FileInputStream input =new FileInputStream(App.imagen+"fondo.jpg")){
-            Image i=new Image(input);
-            BackgroundImage bgI=new BackgroundImage(i, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT); 
-            Background bg= new Background(bgI);
-            princi_labo.setBackground(bg);
-        }catch(Exception i){
-            System.out.println("algo salio mal ya fue");
-        }
-         Stage ventanalabo= new Stage();
-         Scene scene_labo= new Scene(princi_labo);
-         ventanalabo.setScene(scene_labo);
-         ventanalabo.show();
-                    
-            
-            
-            
-            
-            
-            
-        }else{
+            princi_labo.getChildren().addAll(c1, contenedor_botones);
+            try (FileInputStream input = new FileInputStream(App.imagen + "fondo.jpg")) {
+                Image i = new Image(input);
+                BackgroundImage bgI = new BackgroundImage(i, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+                Background bg = new Background(bgI);
+                princi_labo.setBackground(bg);
+            } catch (Exception i) {
+                System.out.println("algo salio mal ya fue");
+            }
+            Stage ventanalabo = new Stage();
+            Scene scene_labo = new Scene(princi_labo);
+            ventanalabo.setScene(scene_labo);
+            ventanalabo.show();
+
+        } else {
             System.out.println("ususario no registrado");
         }
-    
+
     }
 
-    
- 
     public void VentanacrearUsuario() {
 
         Platform.runLater(new Runnable() {
@@ -257,10 +241,12 @@ public class VentanaInicioController implements Initializable {
                 titulo.setTextFill(Paint.valueOf("BLUE"));
                 HBox contTitulo = new HBox();
                 contTitulo.getChildren().add(titulo);
+                contTitulo.setPadding(new Insets(5, 0, 10, 0));
                 contTitulo.setAlignment(Pos.CENTER);
 
                 //primer GridPane y estructura
                 GridPane grid1 = new GridPane();
+                grid1.getColumnConstraints().add(new ColumnConstraints(220));
 
                 Label cedula = new Label("Cedula:");
                 HBox hCedula = new HBox();
@@ -290,6 +276,7 @@ public class VentanaInicioController implements Initializable {
                 grid1.add(datoApellidos, 1, 2);
 
                 Label fechaNacimiento = new Label("Fecha de Nacimiento:");
+                fechaNacimiento.setLayoutX(100);
                 HBox hFecha = new HBox();
                 hFecha.getChildren().add(fechaNacimiento);
                 hFecha.setAlignment(Pos.CENTER_RIGHT);
@@ -298,7 +285,6 @@ public class VentanaInicioController implements Initializable {
                 grid1.add(hFecha, 0, 3);
                 grid1.add(datoFecha, 1, 3);
 
-                grid1.setAlignment(Pos.CENTER);
                 grid1.setVgap(10);
                 grid1.setHgap(10);
 
@@ -370,23 +356,39 @@ public class VentanaInicioController implements Initializable {
                 grid1.add(hContrasena, 0, 9);
                 grid1.add(datoContrasena, 1, 9);
 
+                //******************Nuev0************************//
+                Button salir = new Button("Salir del registro");
+                HBox hBoton = new HBox();
+                salir.setStyle("-fx-background-color:  #1282C8");
+                salir.setTextFill(Paint.valueOf("white"));
+                salir.setPrefSize(150, 10);
+
+                //**********************Fin************************
                 Button registrar = new Button();
                 registrar.setText("Registrar");
-                registrar.setStyle("-fx-background-color:Blue");
+                registrar.setStyle("-fx-background-color:  #1282C8");//-**********Nuevo
                 HBox hRegistro = new HBox();
-                hRegistro.getChildren().add(registrar);
+                hRegistro.setSpacing(20);
+                hRegistro.setPadding(new Insets(10, 0, 0, 0));
+                hRegistro.getChildren().addAll(salir, registrar);
                 hRegistro.setAlignment(Pos.CENTER);
+                ////******************Nuevo********************
 
+                registrar.setTextFill(Paint.valueOf("white"));
+                registrar.setPrefSize(150, 10);
+
+                //*************Fin*************************
                 Label mensaje = new Label("");
                 HBox hMensaje = new HBox();
                 hMensaje.getChildren().add(mensaje);
+                hMensaje.setPadding(new Insets(15, 0, 0, 0));
                 hMensaje.setAlignment(Pos.CENTER);
 
                 //Nueva Ventana
                 Stage nuevoPaciente = (Stage) crearcuenta.getScene().getWindow();
-                root.setSpacing(20);
+                root.setSpacing(10);
                 root.getChildren().addAll(contTitulo, grid1);
-                Scene scene = new Scene(root, 600, 500);
+                Scene scene = new Scene(root, 600, 550);
                 nuevoPaciente.setScene(scene);
                 nuevoPaciente.setTitle("Nuevo Paciente");
                 root.getChildren().addAll(hRegistro, hMensaje);
@@ -395,42 +397,40 @@ public class VentanaInicioController implements Initializable {
 
                     @Override
                     public void handle(ActionEvent e) {
-                        String genero="";
-                        String dcedula="";
-                        String dnombre="";
+                        String genero = "";
+                        String dcedula = "";
+                        String dnombre = "";
                         String dapellido = "";
                         String dfecha = "";
-                        String dciudad ="";
+                        String dciudad = "";
                         String demail = "";
                         String dtelefono = "";
                         String dusuario = "";
-                        String dcontrasena ="";
-                        
-                        try{
-                        RadioButton elegido = (RadioButton) grupo.getSelectedToggle();
-                         dcedula = datoCedula.getText();
-                         dnombre = datoNombres.getText();
-                         dapellido = datoApellidos.getText();
-                         dfecha = datoFecha.getText();
-                         dciudad = datoCiudad.getText();
-                         demail = datoEmail.getText();
-                         dtelefono = datoTelefono.getText();
-                         dusuario = datoUsuario.getText();
-                         dcontrasena = datoContrasena.getText();
-                         genero=elegido.getText();//Debe ser seleccionado    
-                        }catch(RuntimeException a){
-                               
-                            }
-                        if (
-                                  ("".equals(dcedula)) || ("".equals(dnombre)) ||
-                                  ("".equals(dapellido)) || (" ".equals(dfecha)) ||
-                                  ("".equals(dciudad)) || (" ".equals(demail)) ||
-                                  ("".equals(dtelefono)) || (" ".equals(dusuario)) ||
-                                  ("".equals(dcontrasena)|| "".equals(genero))
-                                 ) {
-                             mensaje.setText("Hay campos vacios");
+                        String dcontrasena = "";
+
+                        try {
+                            RadioButton elegido = (RadioButton) grupo.getSelectedToggle();
+                            dcedula = datoCedula.getText();
+                            dnombre = datoNombres.getText();
+                            dapellido = datoApellidos.getText();
+                            dfecha = datoFecha.getText();
+                            dciudad = datoCiudad.getText();
+                            demail = datoEmail.getText();
+                            dtelefono = datoTelefono.getText();
+                            dusuario = datoUsuario.getText();
+                            dcontrasena = datoContrasena.getText();
+                            genero = elegido.getText();//Debe ser seleccionado    
+                        } catch (RuntimeException a) {
+
+                        }
+                        if (("".equals(dcedula)) || ("".equals(dnombre))
+                                || ("".equals(dapellido)) || ("".equals(dfecha))
+                                || ("".equals(dciudad)) || ("".equals(demail))
+                                || ("".equals(dtelefono)) || ("".equals(dusuario))
+                                || ("".equals(dcontrasena) || "".equals(genero))) {
+                            mensaje.setText("Hay campos vacios");
                             mensaje.setTextFill(Paint.valueOf("Red"));
-                           
+
                         } else {
                             try (BufferedWriter bf = new BufferedWriter(new FileWriter(App.pathFiles + "usuarios.txt", true))) {
                                 String linea = datoUsuario.getText() + "," + datoContrasena.getText() + "," + "P\n";
@@ -442,6 +442,10 @@ public class VentanaInicioController implements Initializable {
                                     b.write(linea2 + "\n");
                                     mensaje.setText("Su registro fue exitoso");
 
+                                    ////**************************Nuevo**********************************/////
+                                    mensaje.setTextFill(Paint.valueOf("Green"));
+
+                                    ///*******************Fin********************/////////////////
                                 } catch (IOException ex) {
 
                                 }
@@ -450,15 +454,48 @@ public class VentanaInicioController implements Initializable {
                                 System.out.println("no se encontro");
                             }
                         }
-                       
+
                     }
 
+                });
+
+                salir.setOnAction(new EventHandler<ActionEvent>(){
+                    
+                    @Override
+                    public void handle(ActionEvent e){
+                        cambiarventanaInicio();
+                    }
                 });
 
                 nuevoPaciente.show();
 
             }
         });
+
+    }
+    
+    public void cambiarventanaInicio() {
+//        Platform.runLater(new Runnable() {
+//            @Override
+//            public void run() {
+//               
+//                
+//                Stage inicio = (Stage) rootPrincipal.getScene().getWindow();
+//                
+//                FXMLLoader fx = new FXMLLoader(VentanaInicioController.class.getResource("VentanaInicio.fxml"));
+//                try {
+//                    Parent root = fx.load();
+//                    Scene sc = new Scene(root);
+//                    inicio.setScene(sc);
+//
+//                    inicio.show();
+//
+//                } catch (IOException ex) {
+//
+//                }
+//            }
+//        }
+//        );
 
     }
 

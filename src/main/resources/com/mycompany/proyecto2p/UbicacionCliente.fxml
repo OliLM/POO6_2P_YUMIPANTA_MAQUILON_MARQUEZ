@@ -29,40 +29,45 @@
          </padding>
       </HBox>
       <Pane fx:id="pane" prefHeight="300.0" prefWidth="200.0" />
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <VBox prefHeight="200.0" prefWidth="250.0" spacing="10.0">
                <children>
-                  <Label text="Direccion:" />
-                  <TextField fx:id="textDireccion" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label text="Direccion:" />
+                        <TextField fx:id="textDireccion" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label text="Fecha:" />
+                        <TextField fx:id="textFecha" />
+                     </children>
+                     <padding>
+                        <Insets left="38.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label text="Hora:" />
+                        <TextField fx:id="textHora" />
+                     </children>
+                     <padding>
+                        <Insets left="42.0" />
+                     </padding>
+                  </HBox>
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets top="5.0" />
                </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-               <children>
-                  <Label text="Fecha:" />
-                  <TextField fx:id="textFecha" />
-               </children>
-               <padding>
-                  <Insets left="38.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-               <children>
-                  <Label text="Hora:" />
-                  <TextField fx:id="textHora" />
-               </children>
-               <padding>
-                  <Insets left="42.0" />
-               </padding>
-            </HBox>
+            </VBox>
+            <Label fx:id="mensajeAviso" />
          </children>
-         <padding>
-            <Insets top="5.0" />
-         </padding>
-      </VBox>
+      </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button fx:id="btnFinalizar" mnemonicParsing="false" onAction="#guardarInformacion" style="-fx-background-color: #1282C8;" text="Finalizar" textFill="WHITE" />

@@ -24,15 +24,15 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Label text="Tipo:" />
-            <ComboBox fx:id="comboDiagnostico" prefWidth="150.0" />
+            <ComboBox id="ComboDiagnostico" fx:id="comboDiagnostico" prefWidth="150.0" />
             <Label text="Prueba:" />
-            <ComboBox fx:id="comboPrueba" prefWidth="150.0" />
+            <ComboBox id="ComboPrueba" fx:id="comboPrueba" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Label text="Valor Unitario:" />
-            <Label text="\$" />
+            <Label fx:id="d" text="\$" />
          </children>
          <padding>
             <Insets left="36.0" />

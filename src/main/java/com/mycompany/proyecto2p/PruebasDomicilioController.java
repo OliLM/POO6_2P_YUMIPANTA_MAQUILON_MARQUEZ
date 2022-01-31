@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -27,7 +29,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import clasesModelos.Prueba;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import clasesModelos.Prueba;
+import java.util.ArrayList;
 import javafx.stage.Stage;
+
 
 /**
  * FXML Controller class
@@ -41,35 +50,29 @@ public class PruebasDomicilioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
         ArrayList<String> tipo = new ArrayList<>();
         tipo.add("Diagnóstico");
         tipo.add("Anticuerpos");
 
-        comboDiagnostico.getItems().addAll(tipo);
-        
-        comboDiagnostico.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            
-            @Override
-            public void handle(ActionEvent e){
-                Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                comboPrueba.getItems().addAll(CargarCombo(comboDiagnostico.getValue()));
-                }});
-                
-            }
-            
-        });
-        
-    }
+        ComboDiagnostico.getItems().addAll(tipo); 
+    } 
+    @FXML
+   private  VBox vbox_nombre ;
+   @FXML
+   private VBox vbox_cantidad;
+   @FXML
+   private VBox vbox_Precio;
+   
+    
 
     @FXML
     private VBox root;
     @FXML
-    private ComboBox<String> comboDiagnostico;
+    private ComboBox<String> ComboDiagnostico;
+
     @FXML
-    private ComboBox<Prueba> comboPrueba;
+    private ComboBox<Prueba> ComboPrueba;
     @FXML
     private TextField texCantidad;
     @FXML
@@ -94,7 +97,34 @@ public class PruebasDomicilioController implements Initializable {
     private Label total;
     @FXML
     private Button btnContinuar;
-
+    @FXML 
+    private Label dinero;
+    @FXML
+   private void ValorPrueba(ActionEvent e){
+        Prueba p=ComboPrueba.getValue();
+        double valor=p.getPrecio();
+        dinero.setText(String.valueOf(valor));
+    }
+    @FXML
+   private void AgregarPruebas(ActionEvent o){
+       double st=0;
+        Label nombre=new Label(textNombre.getText()); 
+        Label Cantidad=new Label(texCantidad.getText()); 
+        Label Precio=new Label(textPrecio.getText()); 
+        cantidadProductos.getChildren().add(Cantidad);
+        nombreProductos.getChildren().add(nombre);
+        precioProductos.getChildren().add(Precio);    
+        double precio= Double.valueOf(textPrecio.getText());
+        int cantidad= Integer.valueOf(texCantidad.getText());
+        st+=precio*cantidad;
+        double Total=st+5;
+        vbox_nombre.getChildren().add(nombre);
+        vbox_cantidad.getChildren().add(Cantidad);
+        vbox_Precio.getChildren().add(Precio);
+        subTotal.setText(String.valueOf(st));
+        total.setText(String.valueOf(Total));  
+    }
+    
     private ArrayList<Prueba> CargarCombo(String tipo) {
         
         
@@ -117,11 +147,13 @@ public class PruebasDomicilioController implements Initializable {
             }
 
         } catch (Exception a) {
+            
 
         }
         return pruebas;
 
     }
+    
 
     @FXML
     private void abrirVentanaUbicacionCliente(ActionEvent event) {
@@ -140,4 +172,15 @@ public class PruebasDomicilioController implements Initializable {
 
     }
 
+
 }
+
+ 
+  
+  
+  
+
+
+    
+    
+

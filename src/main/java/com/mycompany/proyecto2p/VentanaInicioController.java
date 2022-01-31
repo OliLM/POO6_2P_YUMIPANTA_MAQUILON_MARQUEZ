@@ -71,6 +71,7 @@ public class VentanaInicioController implements Initializable {
 
         });
     }
+    public Usuario user;
     @FXML
     private VBox rootPrincipal;
     @FXML
@@ -91,10 +92,8 @@ public class VentanaInicioController implements Initializable {
     @FXML
     private void OpcionesUsuario(ActionEvent event) {
         char u = 'P';
-        //validar usuario
         if (Usuario.validar_usuario(txtuser.getText(), txtpassword.getText()) == true && Usuario.obtener_tipo(txtuser.getText(), txtpassword.getText()) == u) {
             System.out.println(Usuario.validar_usuario(txtuser.getText(), txtpassword.getText()));
-
             //Codigo para el contenedor de Label Bienvenido
             Label nombrePaciente = new Label("Bienvenido");
             nombrePaciente.setFont(Font.font(20));
@@ -475,27 +474,26 @@ public class VentanaInicioController implements Initializable {
     }
     
     public void cambiarventanaInicio() {
-//        Platform.runLater(new Runnable() {
-//            @Override
-//            public void run() {
-//               
-//                
-//                Stage inicio = (Stage) rootPrincipal.getScene().getWindow();
-//                
-//                FXMLLoader fx = new FXMLLoader(VentanaInicioController.class.getResource("VentanaInicio.fxml"));
-//                try {
-//                    Parent root = fx.load();
-//                    Scene sc = new Scene(root);
-//                    inicio.setScene(sc);
-//
-//                    inicio.show();
-//
-//                } catch (IOException ex) {
-//
-//                }
-//            }
-//        }
-//        );
+      Platform.runLater(new Runnable() {
+          @Override
+          public void run() {              
+               
+              Stage inicio = (Stage) rootPrincipal.getScene().getWindow();
+              
+               FXMLLoader fx = new FXMLLoader(VentanaInicioController.class.getResource("VentanaInicio.fxml"));
+               try {
+                    Parent root = fx.load();
+                   Scene sc = new Scene(root);
+                   inicio.setScene(sc);
+
+                  inicio.show();
+
+               } catch (IOException ex) {
+
+               }
+           }
+       }
+      );
 
     }
 
